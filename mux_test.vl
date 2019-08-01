@@ -1,0 +1,27 @@
+module mux_tb;
+reg[15:0] A;
+reg [3:0] S;
+wire F;
+mux M(.in(A),.sel(S),.out(o));
+
+initial
+begin 
+$dumpfile("mux.vcd");
+$dumpvars(0,mux_tb);
+$monitor($time,"A=%h,S=%h,F=%b",A,S,F);
+#5
+A=16'h 3f0a;
+S=4'h 0;
+#5
+S=4'h 1;
+#5 
+S =4'h 6;
+#5
+S=4'h c;
+#5
+S=4'h F;
+#5
+$finish;
+
+end
+endmodule
